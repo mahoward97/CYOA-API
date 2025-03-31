@@ -1,5 +1,9 @@
 {
-  "devDependencies": {
-    "@types/node": "^22.13.14"
+  "name": "cyoa-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "@vercel/node": "^1.14.0"
   }
 }
