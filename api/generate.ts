@@ -34,11 +34,15 @@ export default async function handler(req: any, res: any) {
 
     const data = await openaiRes.json();
 
-    const story = data.choices?.[0]?.message?.content || 'No story generated.';
+    const story = data.choices?.[0]?.message?.content;
+
+    if (!story) {
+      return res.status(500).json({ error: 'No story generated' });
+    }
 
     return res.status(200).json({ story });
-  } catch (err) {
-    console.error('Error generating story:', err);
-    return res.status(500).json({ error: 'Failed to generate story.' });
+  } catch (err: any) {
+    console.error('🔥 Error calling OpenAI:', err);
+    return res.status(500).json({ error: 'Failed to generate story' });
   }
 }
